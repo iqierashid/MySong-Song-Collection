@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title> Song Collection Sign Up </title>
+    <link rel="stylesheet" href="./loginstyle.css">
+    
+</head>
+
+<body>
+<div id="bg"></div>
+<form name ="signupform" action="userRegister.php" method="post" >
+
+    <h1>Sign Up</h1>
+    <div class="form-field">
+        <input type="text" placeholder="Username"  name="username" maxlength="15" required/>
+    </div>
+
+    <div class="form-field">
+        <input type="password" placeholder="Password" name="userPwd" maxlength="15" required/>
+    </div>
+    <div class="form-field">
+        <input type="password" placeholder="Confirm Password" name="confirm_password">
+        <div id="error"></div> </div>
+    </div>
+    <div class="form-field">
+        <button class="btn" type="submit" value="Login">Sign up</button>
+        <button class="btn" type="reset" value="Cancel">Cancel</button>
+    </div>
+    Click <a href="login.html"> here </a> to login.
+</form>
+<script>
+    function
+     
+    validatePassword() {
+      var password = document.getElementById("userPwd").value;
+      var confirmPassword = document.getElementById("confirm_password").addEventListener("change", validatePassword);
+    
+    
+      
+    if (password != confirmPassword) {
+        document.getElementById("error").innerHTML = "Passwords do not match.";
+        // Prevent form submission (optional)
+        window.location.href = "signup.html";
+        return false;
+      } else {
+        document.getElementById("error").innerHTML = "";
+      }
+    }
+</script>
+</body>
+</html>
