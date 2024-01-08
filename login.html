@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title> Song Collection Login </title>
+    <link rel="stylesheet" href="./loginstyle.css">
+    <style>
+    #header{
+        font-size: 35px;
+    }
+    </style>
+    
+</head>
+
+
+<body>
+    <div id="bg"></div>
+<form name ="loginVerify" action="loginVerify.php" method="post" >
+
+    <p id="header"><b>Song Collection</b></p>
+    <p id="header">Login</p>
+    <div class="form-field">
+        <input type="text" placeholder="User ID"  name="username" maxlength="15" required/>
+    </div>
+
+    <div class="form-field">
+        <input type="password" placeholder="Password" name="userPwd" maxlength="15" required/>
+    </div>    
+    <div class="form-field">
+        <button class="btn" type="submit" value="Login">Log in</button>
+        <button class="btn" type="reset" value="Cancel">Cancel</button>
+    </div>
+    <br><br>
+    <p style="font-size: 15px;">Don't have account? Click <a href="signup.html"> here </a></p>
+</form>
+
+</body>
+</html>
