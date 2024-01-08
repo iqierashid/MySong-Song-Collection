@@ -7,13 +7,13 @@
 <?php
 
 
-$userID = $_POST['userID'];
+$userName = $_POST['username'];
 $userPwd = $_POST['userPwd'];
 
 $host = "localhost";
 $username = "root";
 $password = ""; 
-$dbname = " "; //change to new db
+$dbname = "test_project"; //change to new db
 
 $link = new mysqli($host, $username, $password, $dbname);
 if ($link->connect_error) {
@@ -22,7 +22,7 @@ if ($link->connect_error) {
 else
 {
 
-    $queryCheck = "SELECT * from USERS where UserID = '".$userID."' ";
+    $queryCheck = "SELECT * from USERS where UserID = '".$userName."-' ";
 
     $resultCheck = $link->query($queryCheck);
 
@@ -40,7 +40,7 @@ else
 
             session_start();
 
-            $_SESSION["UID"] = $userID ;
+            $_SESSION["UID"] = $userName ;
             $_SESSION["UserType"] = $row["UserType"];
 
 
