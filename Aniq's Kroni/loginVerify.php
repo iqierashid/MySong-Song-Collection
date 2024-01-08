@@ -22,7 +22,7 @@ if ($link->connect_error) {
 else
 {
 
-    $queryCheck = "SELECT * from USERS where UserID = '".$userName."-' ";
+    $queryCheck = "SELECT * from USERS where UserName = '".$userName."' ";
 
     $resultCheck = $link->query($queryCheck);
 
