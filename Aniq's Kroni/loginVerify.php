@@ -7,8 +7,8 @@
 <?php
 
 
-$userName = $_POST['username'];
-$userPwd = $_POST['userPwd'];
+$userName = $_POST['username'];//user name
+$userPwd = $_POST['userPwd'];// user pass
 
 $host = "localhost";
 $username = "root";
