@@ -21,7 +21,7 @@ $confirm_password = $_POST['confirm_password']
 $host = "localhost";
 $user = "root";
 $pass = "";
-$db = "test_project";
+$db = "song_collection";
 $conn = new mysqli($host,$user,$pass,$db);
 
 if($conn->connect_error) {

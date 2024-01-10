@@ -13,7 +13,7 @@ $userPwd = $_POST['userPwd'];// user pass
 $host = "localhost";
 $username = "root";
 $password = ""; 
-$dbname = "test_project"; //change to new db
+$dbname = "song_collection"; //change to new db
 
 $link = new mysqli($host, $username, $password, $dbname);
 if ($link->connect_error) {
