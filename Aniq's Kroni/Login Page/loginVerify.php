@@ -44,7 +44,7 @@ else
             $_SESSION["UserType"] = $row["UserType"];
 
 
-            header("Location:menu.php");
+            header("Location:/Group Project/menu.php");
         } else { 
 
             echo "<p style='color:red;'>Wrong password!!! </p>";

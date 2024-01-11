@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css?family=Lato:400,700");
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap');
 #bg {
   background-image: url('img/background.jpg');
   position: fixed;
@@ -11,7 +11,7 @@
 }
 
 body {
-  font-family: 'Lato', sans-serif;
+  font-family: 'Poppins', sans-serif;
   color: black;
   display: flex;
   justify-content: center;
@@ -37,18 +37,18 @@ form .form-field::before {
   background-size: cover;
   background-repeat: no-repeat;
 }
-form .form-field:nth-child(2)::before {
+form .form-field:nth-child(1)::before {
   background-image: url(img/user-icon.png);
   width: 20px;
   height: 20px;
   top: 15px;
 }
-form .form-field:nth-child(3)::before {
+form .form-field:nth-child(2)::before {
   background-image: url(img/lock-icon.png);
   width: 16px;
   height: 16px;
 }
-form .form-field:nth-child(4)::before {
+form .form-field:nth-child(3)::before {
   background-image: url(img/lock-icon.png);
   width: 16px;
   height: 16px;
