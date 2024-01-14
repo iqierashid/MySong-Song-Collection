@@ -6,33 +6,13 @@ if(isset($_SESSION["UID"])) {
 <!DOCTYPE html>
 <html>
 <head>
-<title><?php echo $_SESSION["UID"];?>'s Song Collection </title>
+<title>MySong Update</title>
 <link rel="stylesheet" href="/Group Project/css/menuStyle.css">
-<link rel="stylesheet" href="/Group Project/css/viewStyle.css">
+<link rel="stylesheet" href="/Group Project/css/editStyle.css">
 </head>
 
 <body>
-
-<?php
-
-
-$host = "localhost";
-$user = "root";
-$pass = "";
-$db = "song_collection";
-
-$conn = new mysqli($host,$user,$pass,$db);
-
-if($conn->connect_error){
-    die("Connection failed: " . $conn->connect_error);
-}
-else{
-
-    $queryview ="SELECT * FROM SONGS where SongStatus = 'Approved'"; // only user's songs collection visible
-    $resultQ =$conn->query($queryview);
-
-    ?>
-    <nav>
+<nav>
     <div class="wrapper">
       <div class="logo"><a href="/Group Project/menu.php">MySong</a></div>
       <input type="radio" name="slider" id="menu-btn">
@@ -46,19 +26,41 @@ else{
           <input type="checkbox" id="showDrop">
           <label for="showDrop" class="mobile-item">Song Collection</label>
           <ul class="drop-menu">
-            <li><a href="#">Song View</a></li>
-            <li><a href="/Group Project/Users Only/songeditView.php">Song Update</a></li>
+            <li><a href="/Group Project/Users Only/songview.php">Song View</a></li>
+            <li><a href="#">Song Update</a></li>
             <li><a href="/Group Project/Users Only/songdelete.php">Song Delete</a></li>            
           </ul>
         </li>
         <li><a href="/Group Project/Login Page/logout.php">Logout</a></li>
     </div>
     </nav>
+<br><br><br><br>
+<h2><?php echo $_SESSION["UID"];?>'s Collection Song</h2>
+<br>
+<p> Choose which record you want to update </p>
+<?php
 
-    <br><br><br><br>
-    <h2><?php echo $_SESSION["UID"];?>'s Song Collection</h2><br>
-    <table border ="2">
-    <tr>
+$host = "localhost";
+$user = "root";
+$pass = "";
+$db = "song_collection";
+
+$conn = new mysqli($host,$user,$pass,$db);
+
+if($conn->connect_error){
+    die("Connection failed: " . $conn->connect_error);
+}
+else{
+
+    $queryview ="SELECT * FROM SONGS where OwnerID = '".$_SESSION["UID"]."' ";
+    $resultQ =$conn->query($queryview);
+
+?>
+
+<form action="songeditDetails.php" method="POST" >
+<table border ="2">
+<tr>
+    <th> Choose </th>
     <th> Title of the Song</th>
     <th> Artist/Band</th>
     <th> Youtube link/URL</th>
@@ -66,36 +68,43 @@ else{
     <th> Language</th>
     <th> Release Date</th>
     <th> Other relevant Details</th>
-    <th> Approved/Rejected</th>
-    <th> Owner Id</th>
-    </tr>
+</tr>
+
 <?php
-    if ($resultQ->num_rows > 0){
-        while($row = $resultQ->fetch_assoc()){
+if ($resultQ->num_rows > 0){
+    while($row = $resultQ->fetch_assoc()) {
 ?>
-
-
-
 <tr>
+    <td><input type="radio" name="SongID" value="<?php echo $row["SongID"]; ?>" required> </td>
     <td><?php echo $row["SongTitle"];?></td>
     <td><?php echo $row["SongArtist"];?></td>
-    <td><a href="<?php echo $row["SongUrl"];?>"><?php echo $row["SongUrl"];?></a></td>
+    <td><?php echo $row["SongUrl"];?></td>
     <td><?php echo $row["SongGenre"];?></td>
-    <td><?php echo $row["SongLanguage"]; ?></td>
+    <td><?php echo $row["SongLanguage"];?></td>
     <td><?php echo $row["SongReleaseDate"];?></td>
     <td><?php echo $row["OtherDetails"];?></td>
-    <td><?php echo $row["SongStatus"];?></td>
-    <td><?php echo $row["OwnerID"];?></td>
 </tr>
+
 <?php
         }
     } else {
-        echo "<tr><th colspan='7' style='color:red;'No Data Selected</td></tr>";
+        echo "<tr><th colspan='8' style='color:red;'No Data Selected</td></tr>";
     }
 }
-$conn->close();
 ?>
 </table>
+<?php
+$conn->close();
+?>
+
+<br><br>
+<div class="form-field">
+<button class="btn" type="submit" value="View record to Edit" >View record to edit</button>
+</div>
+<br><br>
+
+</form>
+
 </body>
 </html>
 <?php

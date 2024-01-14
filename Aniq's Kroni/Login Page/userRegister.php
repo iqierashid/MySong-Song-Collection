@@ -2,7 +2,7 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <title> Registeration Successful </title>
+    <title> MySong Signup </title>
     <link rel="stylesheet" href="./RegisterStyle.css">
 </head>
 <?php
@@ -29,7 +29,8 @@ else
     values ('".$userName."','".$userPwd."','".$userType."')";
     
     if ($userPwd != $confirm_password) {
-        echo "The password not match";
+        echo "<p>The password doesn't match.</p>";
+        echo "Click <a href='/Group Project/Login Page/signup.html'>here</a> to sign up again.";
         exit();
     }
     if($conn->query($queryInsert) === TRUE){

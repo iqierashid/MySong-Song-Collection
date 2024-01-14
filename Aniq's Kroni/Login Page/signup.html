@@ -2,15 +2,27 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <title> Song Collection Sign Up </title>
+    <title> MySong Sign Up </title>
     <link rel="stylesheet" href="/Group Project/css/signupstyle.css">
     
 </head>
 
 <body>
-<div id="bg"></div>
+<nav>
+    <div class="wrapper">
+      <div class="logo"><a href="/Group Project/index.html">MySong</a></div>
+      <input type="radio" name="slider" id="menu-btn">
+      <input type="radio" name="slider" id="close-btn">
+      <ul class="nav-links">
+        <li><a href="/Group Project/Login Page/login.html">Login</a></li>
+        <li><a href="/Group Project/Login Page/signup.html">Sign Up</a></li>
+    </div>
+</nav>
+
 <form name ="signupform" action="/Group Project/Login Page/userRegister.php" method="post" >
 
+    <br><br><br><br>
+    <br><br><br>
     <h1>Sign Up</h1>
     <div class="form-field">
         <input type="text" placeholder="Username"  name="username" maxlength="15" required/>
@@ -27,26 +39,24 @@
         <button class="btn" type="submit" value="Signup">Sign up</button>
         <button class="btn" type="reset" value="Cancel">Cancel</button>
     </div>
-    Click <a href="login.html"> here </a> to login.
 </form>
 <script>
-    function
-     
-    validatePassword() {
+    function validatePassword() {
       var password = document.getElementById("userPwd").value;
-      var confirmPassword = document.getElementById("confirm_password").addEventListener("change", validatePassword);
+      var confirmPassword = document.getElementById("confirm_password").value;
     
-    
-      
-    if (password != confirmPassword) {
+      if (password != confirmPassword) {
         document.getElementById("error").innerHTML = "Passwords do not match.";
-        // Prevent form submission (optional)
-        window.location.href = "signup.html";
+        // Redirect to sign-up page
+        window.location.href = "/Group Project/Login Page/signup.html";
         return false;
       } else {
         document.getElementById("error").innerHTML = "";
       }
     }
+    
+    document.getElementById("confirm_password").addEventListener("change", validatePassword);
 </script>
+
 </body>
 </html>

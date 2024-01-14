@@ -9,12 +9,8 @@ if(isset($_SESSION["UID"])) {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Song Collection</title>
-    <style>
-    table, th, td {
-    border: 1px solid black;
-  }
-</style>
+    <title>MySong </title>
+    <link rel="stylesheet" href="/Group Project/css/viewStyle.css">
 </head>
 <?php
 
@@ -28,9 +24,9 @@ if(isset($_SESSION["UID"])) {
 ?>
 <body>
 <h1>Song Registration Details</h1>
-<table>
+<table border="2">
         <tr>
-            <th>Pet Attribute</th>
+            <th>Song Attribute</th>
             <th>Details</th>
         </tr>
         <tr>
@@ -77,6 +73,7 @@ else
 	$queryInsert = "INSERT INTO songs (SongTitle, SongArtist, SongURL, SongGenre, SongLanguage, SongReleaseDate, OtherDetails,OwnerID)
     VALUES ('$songTitle', '$artistName', '$songMedia', '$genre', '$language', '$releaseDate', '$otherDetails','".$_SESSION["UID"]."')";
 		
+        
 	if ($conn->query($queryInsert) === TRUE) {
 		echo "<p style='color: blue;'>Success insert song data.</p>";
 		}
@@ -99,8 +96,7 @@ $conn->close();
 }
 else
 {
-echo "No session exists or session has expired. Please
-log in again.<br>";
-echo "<a href=login.html> Login </a>";
+    echo "No session exists or session has expired. Please log in again.<br>";
+    echo "<a href='/Group Project/Login Page/login.html'>Login </a>";
 }
 ?>

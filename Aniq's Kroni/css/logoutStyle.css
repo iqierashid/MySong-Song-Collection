@@ -134,24 +134,6 @@ nav .wrapper{
   top: 10px;
 }
 
-.btn.menu-btn {
-  display: none;
-  font-size: 24px;
-  cursor: pointer;
-}
-
-@media screen and (max-width: 970px) {
-  .btn.menu-btn {
-    display: block;
-  }
-
-  /* Add styles for the appearance of the hamburger icon */
-  .btn.menu-btn::before {
-    content: '\2261'; /* Unicode character for three horizontal lines */
-  }
-}
-
-
 @media screen and (max-width: 970px) {
   .wrapper .btn{
     display: block;

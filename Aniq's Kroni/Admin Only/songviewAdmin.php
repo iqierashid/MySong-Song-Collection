@@ -28,35 +28,40 @@ if($conn->connect_error){
 }
 else{
 
-    $queryview ="SELECT * FROM SONGS where SongStatus = 'Approved'"; // only user's songs collection visible
+    $queryview ="SELECT * FROM SONGS"; // only user's songs collection visible
     $resultQ =$conn->query($queryview);
 
     ?>
-    <nav>
+<nav>
     <div class="wrapper">
-      <div class="logo"><a href="/Group Project/menu.php">MySong</a></div>
-      <input type="radio" name="slider" id="menu-btn">
-      <input type="radio" name="slider" id="close-btn">
+    <div class="logo"><a href="/Group Project/menu.php">MySong</a></div>
+    <input type="checkbox" id="menu-btn">
+    <input type="checkbox" id="close-btn">
       <ul class="nav-links">
-        <label for="close-btn" class="btn close-btn"><i class="fas fa-times"></i></label>
-        <li><a href="/Group Project/index.html">Home</a></li>
-        <li><a href="/Group Project/Users Only/song_form.php">Song Register</a></li>
-        <li>
-          <a href="#" class="desktop-item">Song Collection</a>
-          <input type="checkbox" id="showDrop">
-          <label for="showDrop" class="mobile-item">Song Collection</label>
-          <ul class="drop-menu">
-            <li><a href="#">Song View</a></li>
-            <li><a href="/Group Project/Users Only/songeditView.php">Song Update</a></li>
-            <li><a href="/Group Project/Users Only/songdelete.php">Song Delete</a></li>            
-          </ul>
-        </li>
-        <li><a href="/Group Project/Login Page/logout.php">Logout</a></li>
-    </div>
-    </nav>
-
+      <label for="close-btn" class="btn close-btn"><i class="fas fa-times"></i></label>
+      <li><a href="/Group Project/index.html">Home</a></li>
+      <li>
+        <a href="#" class="desktop-item">Users</a>
+        <input type="checkbox" id="showDrop">
+        <label for="showDrop" class="mobile-item">Users Song Collection</label>
+        <ul class="drop-menu">
+          <li><a href="#">Song View</a></li>
+          <li><a href="/Group Project/Admin Only/songeditViewAdmin.php">Song Update</a></li>
+          <li><a href="/Group Project/Admin Only/userModView.php">User Moderator</a></li>            
+        </ul>
+      </li>
+      <li><a href="/Group Project/Login Page/logout.php">Logout</a></li>
+      <label for="menu-btn" class="btn menu-btn"><i class="fas fa-bars"></i></label>
+      </ul>
+  </div>
+</nav>
     <br><br><br><br>
-    <h2><?php echo $_SESSION["UID"];?>'s Song Collection</h2><br>
+    <h2>All Song Collection</h2><br>
+    <form action="search.php" method="GET">
+    <label for="searchKeyword">Search Keyword:</label>
+    <input type="text" id="searchKeyword" name="keyword" required>
+    <button type="submit">Search</button>
+    </form>
     <table border ="2">
     <tr>
     <th> Title of the Song</th>
