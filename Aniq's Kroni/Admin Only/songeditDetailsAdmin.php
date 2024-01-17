@@ -30,7 +30,7 @@ if(isset($_SESSION["UID"])) {
         <li><a href="/Group Project/Admin Only/userModView.php">User Moderator</a></li>            
         </ul>
     </li>
-    <li><a href="./Login Page/logout.php">Logout</a></li>
+    <li><a href="/Group Project/Login Page/logout.php">Logout</a></li>
     <label for="menu-btn" class="btn menu-btn"><i class="fas fa-bars"></i></label>
     </ul>
 </div>

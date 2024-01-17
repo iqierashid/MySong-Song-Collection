@@ -1,3 +1,8 @@
+<?php
+session_start();
+//check if session exists
+if(isset($_SESSION["UID"])) {
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -59,19 +64,24 @@ $resultSearch = $conn->query($querySearch);
 // Display search results in a table
 if ($resultSearch->num_rows > 0) {
     echo "<table border = '2'>";
-    echo "<tr><th>SongID</th><th>SongTitle</th><th>SongArtist</th><th>SongGenre</th><th>SongLanguage</th><th>OtherDetails</th></tr>";
-
+    echo "<tr><th>SongID</th><th>SongTitle</th><th>SongArtist</th><th>SongUrl</th><th>SongGenre</th><th>SongLanguage</th><th>SongReleasedate</th><th>OtherDetails</th><th>SongStatus</th><th>OwnerID</th></tr>";
+    echo "<br><br><br><br>";
+    echo "<b>Search for '" .$keyword. "'</b>";
+    echo "<br>";
+    
     while ($row = $resultSearch->fetch_assoc()) {
-        echo "<br><br><br><br>";
-        echo "<b>Search for '" .$keyword. "'</b>";
-        echo "<br>";
+        
         echo "<tr>";
         echo "<td>" . $row['SongID'] . "</td>";
         echo "<td>" . $row['SongTitle'] . "</td>";
         echo "<td>" . $row['SongArtist'] . "</td>";
+        echo "<td>" . $row['SongUrl'] . "</td>";
         echo "<td>" . $row['SongGenre'] . "</td>";
         echo "<td>" . $row['SongLanguage'] . "</td>";
+        echo "<td>" . $row['SongReleaseDate'] . "</td>";
         echo "<td>" . $row['OtherDetails'] . "</td>";
+        echo "<td>" . $row['SongStatus'] . "</td>";
+        echo "<td>" . $row['OwnerID'] . "</td>";
         echo "</tr>";
     }
 
@@ -85,3 +95,11 @@ $conn->close();
 
 </body>
 </html>
+<?php
+}
+else
+{
+    echo "No session exists or session has expired. Please log in again.<br>";
+    echo "<a href='/Group Project/Login Page/login.html'>Login </a>";
+}
+?>

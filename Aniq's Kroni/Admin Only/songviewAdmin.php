@@ -28,7 +28,7 @@ if($conn->connect_error){
 }
 else{
 
-    $queryview ="SELECT * FROM SONGS"; // only user's songs collection visible
+    $queryview = "SELECT * FROM SONGS ORDER BY SongReleaseDate DESC"; // only user's songs collection visible
     $resultQ =$conn->query($queryview);
 
     ?>

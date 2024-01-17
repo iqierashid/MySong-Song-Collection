@@ -38,7 +38,7 @@ else
     if($conn->query($queryUpdate) === TRUE) {
         echo "Success Update New Data";
         echo "<br><br>";
-        echo "Click <a href='/Group Project/Admin Only/userView.php'> here </a> to view user details ";
+        echo "Click <a href='/Group Project/Admin Only/userviewAdmin.php'> here </a> to view user details ";
     } else {
         echo "Error updating record: " . $conn->error;
     }

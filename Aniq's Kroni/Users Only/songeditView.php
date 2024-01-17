@@ -28,7 +28,7 @@ if(isset($_SESSION["UID"])) {
           <ul class="drop-menu">
             <li><a href="/Group Project/Users Only/songview.php">Song View</a></li>
             <li><a href="#">Song Update</a></li>
-            <li><a href="/Group Project/Users Only/songdelete.php">Song Delete</a></li>            
+            <li><a href="/Group Project/Users Only/songdeleteView.php">Song Delete</a></li>            
           </ul>
         </li>
         <li><a href="/Group Project/Login Page/logout.php">Logout</a></li>
@@ -68,6 +68,7 @@ else{
     <th> Language</th>
     <th> Release Date</th>
     <th> Other relevant Details</th>
+    <th> Status </th>
 </tr>
 
 <?php
@@ -78,12 +79,14 @@ if ($resultQ->num_rows > 0){
     <td><input type="radio" name="SongID" value="<?php echo $row["SongID"]; ?>" required> </td>
     <td><?php echo $row["SongTitle"];?></td>
     <td><?php echo $row["SongArtist"];?></td>
-    <td><?php echo $row["SongUrl"];?></td>
+    <td><a href = "<?php echo $row['SongUrl'];?>" target ="_blank"> <?php echo $row["SongUrl"];?> </a></td>
     <td><?php echo $row["SongGenre"];?></td>
     <td><?php echo $row["SongLanguage"];?></td>
     <td><?php echo $row["SongReleaseDate"];?></td>
     <td><?php echo $row["OtherDetails"];?></td>
+    <td><?php echo $row["SongStatus"];?></td>
 </tr>
+
 
 <?php
         }

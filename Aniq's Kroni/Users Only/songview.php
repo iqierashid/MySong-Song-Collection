@@ -21,7 +21,7 @@ $user = "root";
 $pass = "";
 $db = "song_collection";
 
-$conn = new mysqli($host,$user,$pass,$db);
+$conn = new mysqli($host,$user,$pass,$db); // connect to database
 
 if($conn->connect_error){
     die("Connection failed: " . $conn->connect_error);
@@ -32,7 +32,7 @@ else{
     $resultQ =$conn->query($queryview);
 
     ?>
-    <nav>
+    <nav>  
     <div class="wrapper">
       <div class="logo"><a href="/Group Project/menu.php">MySong</a></div>
       <input type="radio" name="slider" id="menu-btn">
@@ -48,7 +48,7 @@ else{
           <ul class="drop-menu">
             <li><a href="#">Song View</a></li>
             <li><a href="/Group Project/Users Only/songeditView.php">Song Update</a></li>
-            <li><a href="/Group Project/Users Only/songdelete.php">Song Delete</a></li>            
+            <li><a href="/Group Project/Users Only/songdeleteView.php">Song Delete</a></li>            
           </ul>
         </li>
         <li><a href="/Group Project/Login Page/logout.php">Logout</a></li>
@@ -56,43 +56,43 @@ else{
     </nav>
 
     <br><br><br><br>
-    <h2><?php echo $_SESSION["UID"];?>'s Song Collection</h2><br>
-    <table border ="2">
-    <tr>
-    <th> Title of the Song</th>
-    <th> Artist/Band</th>
-    <th> Youtube link/URL</th>
-    <th> Genre</th>
-    <th> Language</th>
-    <th> Release Date</th>
-    <th> Other relevant Details</th>
-    <th> Approved/Rejected</th>
-    <th> Owner Id</th>
-    </tr>
+    <h2>All Song Collection</h2><br>
+    
 <?php
     if ($resultQ->num_rows > 0){
-        while($row = $resultQ->fetch_assoc()){
-?>
+        echo "<table border ='2'>
+        <tr>
+        <th> Title of the Song</th>
+        <th> Artist/Band</th>
+        <th> Youtube link/URL</th>
+        <th> Genre</th>
+        <th> Language</th>
+        <th> Release Date</th>
+        <th> Other relevant Details</th>
+        <th> Approved/Rejected</th>
+        <th> Owner Id</th>
+        </tr>";
 
-
-
-<tr>
-    <td><?php echo $row["SongTitle"];?></td>
-    <td><?php echo $row["SongArtist"];?></td>
-    <td><a href="<?php echo $row["SongUrl"];?>"><?php echo $row["SongUrl"];?></a></td>
-    <td><?php echo $row["SongGenre"];?></td>
-    <td><?php echo $row["SongLanguage"]; ?></td>
-    <td><?php echo $row["SongReleaseDate"];?></td>
-    <td><?php echo $row["OtherDetails"];?></td>
-    <td><?php echo $row["SongStatus"];?></td>
-    <td><?php echo $row["OwnerID"];?></td>
-</tr>
-<?php
-        }
+    while($row = $resultQ->fetch_assoc()){
+        echo "<tr>
+              <td>{$row['SongTitle']}</td>
+              <td>{$row['SongArtist']}</td>
+              <td><a href='{$row['SongUrl']}'>{$row['SongUrl']}</a></td>
+              <td>{$row['SongGenre']}</td>
+              <td>{$row['SongLanguage']}</td>
+              <td>{$row['SongReleaseDate']}</td>
+              <td>{$row['OtherDetails']}</td>
+              <td>{$row['SongStatus']}</td>
+              <td>{$row['OwnerID']}</td>
+            </tr>";
+    }
+    echo "</table>";
     } else {
-        echo "<tr><th colspan='7' style='color:red;'No Data Selected</td></tr>";
+    // Display a message when there are no songs approved
+    echo "<p style='color:red;'>There are no songs that have been approved.</p>";
     }
 }
+
 $conn->close();
 ?>
 </table>

@@ -43,7 +43,7 @@ else
     WHERE SongID = $SongID ";
 
     if($conn->query($queryUpdate) === TRUE) {
-        echo "Success Update New Data";
+        echo "<p style='color:blue;'>Success Update New Data</p>";
         echo "<br><br>";
         echo "Click <a href='/Group Project/Users Only/songview.php'> here </a> to view song collection ";
     } else {

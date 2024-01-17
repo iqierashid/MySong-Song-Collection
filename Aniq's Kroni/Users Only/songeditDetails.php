@@ -28,7 +28,7 @@ if(isset($_SESSION["UID"])) {
           <ul class="drop-menu">
             <li><a href="/Group Project/Users Only/songview.php">Song View</a></li>
             <li><a href="#">Song Update</a></li>
-            <li><a href="/Group Project/Users Only/songdelete.php">Song Delete</a></li>            
+            <li><a href="/Group Project/Users Only/songdeleteView.php">Song Delete</a></li>            
           </ul>
         </li>
         <li><a href="/Group Project/Login Page/logout.php">Logout</a></li>
@@ -91,7 +91,7 @@ Language:
 Release Date:<input type="date" name="releaseDate" value="<?php echo $row['SongReleaseDate']?>" 
 placeholder="dd-mm-yyyy" value="" min="1997-01-01" max="2030-12-31" required><br>
 
-Other Relevant Details:<br><textarea name="otherDetails" value="<?php echo $row['OtherDetails']?>" style="height:100px;width:350px"></textarea><br>
+Other Relevant Details:<br><textarea name="otherDetails" style="height:100px;width:350px"><?php echo $row['OtherDetails']?></textarea><br>
 
 <br>
 <input type="hidden" name="SongID" value="<?php echo $row['SongID'];?>">

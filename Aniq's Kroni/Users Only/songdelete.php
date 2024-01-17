@@ -10,7 +10,7 @@ if(isset($_SESSION["UID"])) {
 </head>
 
 <body>
-<h2> Please choose a song to DELETE </h2>
+<h3> Song Deleted! </h3>
 
 <?php
 
@@ -34,6 +34,8 @@ else
 
     if ($conn->query($deleteQuery) === TRUE){
         echo "<p style='color:blue;'> Record has been deleted from database !</p>";
+        echo "<br><br>";
+        echo "Click <a href='/Group Project/Users Only/songview.php'> here </a> to view song collection ";
     } else{
         echo "<p style='color:red;'>Query problems! : " . $conn->error . "</p>";
     }

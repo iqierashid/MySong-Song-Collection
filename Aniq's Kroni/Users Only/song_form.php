@@ -33,7 +33,7 @@ if(isset ($_SESSION["UID"])) {
           <ul class="drop-menu">
             <li><a href="/Group Project/Users Only/songview.php">Song View</a></li>
             <li><a href="/Group Project/Users Only/songeditView.php">Song Update</a></li>
-            <li><a href="/Group Project/Users Only/songdelete.php">Song Delete</a></li>            
+            <li><a href="/Group Project/Users Only/songdeleteView.php">Song Delete</a></li>            
           </ul>
         </li>
         <li><a href="/Group Project/Login Page/logout.php">Logout</a></li>
